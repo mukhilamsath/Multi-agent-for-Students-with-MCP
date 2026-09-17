@@ -42,7 +42,7 @@ Interactive docs:
 
 import logging
 import os
-from typing import Any
+from typing import Any, Optional
 
 from pathlib import Path
 from dotenv import load_dotenv
@@ -53,7 +53,7 @@ load_dotenv(dotenv_path=env_path if env_path.exists() else None)
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field
 
 from orchestrator import orchestrate, OrchestrationResult
 from guardrails import guardrail_status, _GUARDRAIL_ID
@@ -85,7 +85,7 @@ if _missing:
 app = FastAPI(
     title="Student Assistant API",
     description=(
-        "A2A Multi-Agent Student Assistant. "
+        "A2A Multi-Agent Student Assistant with AgentCore compatibility. "
         "A deterministic Python orchestrator routes queries over the A2A protocol "
         "to specialized Strands agents (Study, Schedule, and Research). "
         "Conversations and sessions are persisted per session_id."
@@ -111,34 +111,50 @@ async def _global_exception_handler(request: Request, exc: Exception) -> JSONRes
 # ── Request ───────────────────────────────────────────────────────────────────
 class ChatRequest(BaseModel):
     """
-    Body the client sends to POST /chat.
+    Body the client sends to POST /chat or POST /invocations.
 
-    session_id  identifies the conversation thread. Use the same value across
-                multiple requests for multi-turn follow-up questions.
+    session_id  identifies the conversation thread. Defaults to 'default'.
     query       the student's natural-language question or command.
+    prompt      alias for query (AgentCore standard field).
+    input       alias for query / raw input payload.
     """
-    session_id: str = Field(
-        ...,
-        min_length=1,
+    session_id: Optional[str] = Field(
+        default="default",
         max_length=64,
-        pattern=r"^[a-zA-Z0-9_\-]+$",
         description="Unique session identifier (letters, digits, - and _ only).",
-        examples=["alice", "student-42"],
+        examples=["alice", "student-42", "default"],
     )
-    query: str = Field(
-        ...,
-        min_length=1,
+    query: Optional[str] = Field(
+        default=None,
         max_length=4096,
         description="The student's question or request.",
         examples=["Explain photosynthesis for a beginner"],
     )
+    prompt: Optional[str] = Field(
+        default=None,
+        max_length=4096,
+        description="Alias for query (supported by AgentCore).",
+    )
+    input: Optional[Any] = Field(
+        default=None,
+        description="Alias for input payload (supported by AgentCore).",
+    )
 
-    @field_validator("query")
-    @classmethod
-    def query_not_blank(cls, v: str) -> str:
-        if not v.strip():
-            raise ValueError("query must not be blank or whitespace only.")
-        return v.strip()
+    def get_query_text(self) -> str:
+        """Extract and normalize user query text from query, prompt, or input."""
+        if self.query and self.query.strip():
+            return self.query.strip()
+        if self.prompt and self.prompt.strip():
+            return self.prompt.strip()
+        if self.input is not None:
+            if isinstance(self.input, str) and self.input.strip():
+                return self.input.strip()
+            if isinstance(self.input, dict):
+                for k in ("query", "prompt", "text", "message"):
+                    if self.input.get(k) and str(self.input[k]).strip():
+                        return str(self.input[k]).strip()
+            return str(self.input).strip()
+        return ""
 
     model_config = {
         "json_schema_extra": {
@@ -181,6 +197,11 @@ class ErrorResponse(BaseModel):
     summary="Health check",
     response_description="Server status and configuration.",
 )
+@app.get(
+    "/ping",
+    summary="AgentCore Liveness Probe",
+    response_description="Server status and configuration.",
+)
 def health() -> dict:
     """Liveness probe — returns server status and active config."""
     return {
@@ -206,6 +227,15 @@ def health() -> dict:
     },
     summary="Ask the Student Assistant",
 )
+@app.post(
+    "/invocations",
+    response_model=ChatResponse,
+    responses={
+        422: {"description": "Validation error (invalid request body)"},
+        500: {"model": ErrorResponse, "description": "Agent or internal error"},
+    },
+    summary="AgentCore Invocations Endpoint",
+)
 def chat(request: ChatRequest) -> ChatResponse:
     """
     Send a query to the Student Assistant and receive a structured response.
@@ -218,19 +248,28 @@ def chat(request: ChatRequest) -> ChatResponse:
     dispatches A2A protocol tasks to the relevant specialist agent(s) (Study, Schedule,
     Research, or sequential multi-agent pipelines), and aggregates the final result.
     """
+    query_text = request.get_query_text()
+    session_id = request.session_id or "default"
+
+    if not query_text:
+        raise HTTPException(
+            status_code=422,
+            detail="Request must contain a non-empty 'query', 'prompt', or 'input' field.",
+        )
+
     logger.info(
-        "POST /chat  |  session_id=%r  query=%r",
-        request.session_id, request.query[:80],
+        "POST %s  |  session_id=%r  query=%r",
+        "/chat | /invocations", session_id, query_text[:80],
     )
 
-    result = orchestrate(session_id=request.session_id, query=request.query)
+    result = orchestrate(session_id=session_id, query=query_text)
 
     if not result.success and result.error_detail:
-        logger.error("POST /chat error for session %r: %s", request.session_id, result.error_detail)
+        logger.error("Error for session %r: %s", session_id, result.error_detail)
 
-    logger.info("POST /chat done  |  session_id=%r  specialists=%s", request.session_id, result.specialists_used)
+    logger.info("Done  |  session_id=%r  specialists=%s", session_id, result.specialists_used)
 
-    return ChatResponse(session_id=request.session_id, answer=result.answer)
+    return ChatResponse(session_id=session_id, answer=result.answer)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -238,4 +277,5 @@ def chat(request: ChatRequest) -> ChatResponse:
 # ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("api:app", host="127.0.0.1", port=8000, reload=True)
+    port = int(os.getenv("PORT", "8080"))
+    uvicorn.run("api:app", host="127.0.0.1", port=port, reload=True)

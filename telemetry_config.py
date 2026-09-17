@@ -131,24 +131,23 @@ def setup_telemetry(
     provider.add_span_processor(local_processor)
     logger.info("OpenTelemetry | Local file trace export active -> %s", active_trace_file)
 
-    # ── 4. Add Jaeger / OTLP Exporter ─────────────────────────────────────────
+    # ── 4. Add Jaeger / OTLP Exporter (Only when explicitly enabled) ─────────
+    jaeger_env = os.getenv("JAEGER_ENDPOINT", "").strip()
+    enable_jaeger_flag = os.getenv("ENABLE_JAEGER", "").lower() in ("true", "1", "yes")
+    
     endpoint = (
         jaeger_endpoint
-        or os.getenv("JAEGER_ENDPOINT")
-        or os.getenv("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")
-        or os.getenv("OTEL_EXPORTER_OTLP_ENDPOINT")
+        or (jaeger_env if jaeger_env and jaeger_env.lower() != "none" else None)
     )
 
-    # Check if Jaeger export is explicitly enabled or configured
-    enable_jaeger = os.getenv("ENABLE_JAEGER", "").lower() in ("true", "1", "yes") or bool(endpoint)
+    enable_jaeger = enable_jaeger_flag or bool(jaeger_endpoint) or (bool(jaeger_env) and jaeger_env.lower() != "none")
 
-    if enable_jaeger:
-        target_endpoint = endpoint or "http://localhost:4318/v1/traces"
+    if enable_jaeger and endpoint:
+        target_endpoint = endpoint
         try:
             from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 
             otlp_exporter = OTLPSpanExporter(endpoint=target_endpoint)
-            # BatchSpanProcessor runs asynchronously in background without blocking requests
             batch_processor = BatchSpanProcessor(otlp_exporter)
             provider.add_span_processor(batch_processor)
 
@@ -158,7 +157,7 @@ def setup_telemetry(
         except Exception as exc:
             logger.warning("OpenTelemetry | Failed to initialize Jaeger exporter (%s). Local tracing remains active.", exc)
     else:
-        logger.info("OpenTelemetry | Jaeger export not configured. Set JAEGER_ENDPOINT or ENABLE_JAEGER=true in .env to enable.")
+        logger.info("OpenTelemetry | Remote Jaeger export disabled. Traces saved locally to %s", active_trace_file)
 
     # ── 5. Set Global Tracer Provider ─────────────────────────────────────────
     trace.set_tracer_provider(provider)

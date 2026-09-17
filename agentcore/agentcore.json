@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.agentcore.aws.dev/v1/agentcore.json",
+  "name": "StudentAgentMCP",
+  "version": 1,
+  "runtimes": [
+    {
+      "name": "StudentAssistantAgent",
+      "entrypoint": "api.py",
+      "codeLocation": "./",
+      "runtimeVersion": "PYTHON_3_13",
+      "networkMode": "PUBLIC",
+      "protocol": "HTTP",
+      "build": "CodeZip"
+    }
+  ],
+  "memories": [],
+  "credentials": []
+}

@@ -1052,3 +1052,95 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2026-09-11 15:25:39 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
 2026-09-11 15:25:45 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1436 chars
 2026-09-11 15:25:45 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 14:54:23 | INFO     | api | POST /chat | /invocations  |  session_id='test-agentcore'  query='Add Biology revision due Friday'
+2026-09-17 14:54:23 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test-agentcore] | query='Add Biology revision due Friday'
+2026-09-17 14:54:23 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> schedule
+2026-09-17 14:54:23 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to schedule via A2A
+2026-09-17 14:54:23 | INFO     | a2a.client_manager | A2A | Sending task -> Student Schedule Agent (schedule) [session_id=test-agentcore]
+2026-09-17 14:54:23 | INFO     | agents.servers.schedule_server | Initializing Schedule Agent A2AServer
+2026-09-17 14:54:23 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='__agent_card__'
+2026-09-17 14:54:23 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:24 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='test-agentcore'
+2026-09-17 14:54:24 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:24 | INFO     | session_manager | SessionManager  |  session_id='test-agentcore_schedule'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 14:54:24 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 14:54:26 | INFO     | tools.schedule_tools | add_task called  |  subject='Biology'  task='revision'  due='Friday'
+2026-09-17 14:54:26 | INFO     | tools.schedule_tools | add_task done    |  Task #1 added: [Biology] revision — due: Friday.
+2026-09-17 14:54:27 | INFO     | a2a.client_manager | A2A | Student Schedule Agent completed | response length: 126 chars
+2026-09-17 14:54:27 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 14:54:27 | INFO     | api | Done  |  session_id='test-agentcore'  specialists=['schedule']
+2026-09-17 14:54:27 | INFO     | api | POST /chat | /invocations  |  session_id='test-agentcore'  query='Show me my full schedule'
+2026-09-17 14:54:27 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test-agentcore] | query='Show me my full schedule'
+2026-09-17 14:54:27 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> schedule
+2026-09-17 14:54:27 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to schedule via A2A
+2026-09-17 14:54:27 | INFO     | a2a.client_manager | A2A | Sending task -> Student Schedule Agent (schedule) [session_id=test-agentcore]
+2026-09-17 14:54:28 | INFO     | tools.schedule_tools | view_schedule called  |  filter=''
+2026-09-17 14:54:28 | INFO     | tools.schedule_tools | view_schedule done    |  1 task(s) returned
+2026-09-17 14:54:30 | INFO     | a2a.client_manager | A2A | Student Schedule Agent completed | response length: 132 chars
+2026-09-17 14:54:30 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 14:54:30 | INFO     | api | Done  |  session_id='test-agentcore'  specialists=['schedule']
+2026-09-17 14:54:47 | INFO     | api | POST /chat | /invocations  |  session_id='test-agentcore-study'  query='Explain photosynthesis for a beginner'
+2026-09-17 14:54:47 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test-agentcore-study] | query='Explain photosynthesis for a beginner'
+2026-09-17 14:54:47 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 14:54:47 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 14:54:47 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test-agentcore-study]
+2026-09-17 14:54:47 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 14:54:47 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 14:54:47 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:48 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test-agentcore-study'
+2026-09-17 14:54:48 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:48 | INFO     | session_manager | SessionManager  |  session_id='test-agentcore-study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 14:54:48 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 14:54:59 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1235 chars
+2026-09-17 14:54:59 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 14:54:59 | INFO     | api | Done  |  session_id='test-agentcore-study'  specialists=['study']
+2026-09-17 14:54:59 | INFO     | api | POST /chat | /invocations  |  session_id='test-agentcore-res'  query='Search for Python 3.13 latest release'
+2026-09-17 14:54:59 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test-agentcore-res] | query='Search for Python 3.13 latest release'
+2026-09-17 14:54:59 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-17 14:54:59 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-17 14:54:59 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test-agentcore-res]
+2026-09-17 14:54:59 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-17 14:54:59 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 14:54:59 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:59 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='test-agentcore-res'
+2026-09-17 14:54:59 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 14:54:59 | INFO     | session_manager | SessionManager  |  session_id='test-agentcore-res_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 14:54:59 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 14:55:11 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 1208 chars
+2026-09-17 14:55:11 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 14:55:11 | INFO     | api | Done  |  session_id='test-agentcore-res'  specialists=['research']
+2026-09-17 15:12:30 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='hi what is the last question i asked'
+2026-09-17 15:12:30 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='hi what is the last question i asked'
+2026-09-17 15:12:30 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 15:12:30 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 15:12:30 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-17 15:12:30 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 15:12:30 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 15:12:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 15:12:30 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-17 15:12:30 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='default'
+2026-09-17 15:12:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 15:12:31 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 15:12:31 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 15:12:33 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 181 chars
+2026-09-17 15:12:33 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 15:12:33 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-17 15:12:35 | ERROR    | opentelemetry.exporter.otlp.proto.http.trace_exporter | Failed to export span batch code: 404, reason: Not Found
+2026-09-17 15:15:32 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query="explain krichoff's law"
+2026-09-17 15:15:32 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query="explain krichoff's law"
+2026-09-17 15:15:32 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 15:15:32 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 15:15:32 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-17 15:15:32 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 15:15:32 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 15:15:32 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 15:15:33 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-17 15:15:33 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='default'
+2026-09-17 15:15:33 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 15:15:33 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 15:15:33 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 15:15:38 | ERROR    | opentelemetry.exporter.otlp.proto.http.trace_exporter | Failed to export span batch code: 404, reason: Not Found
+2026-09-17 15:15:40 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1562 chars
+2026-09-17 15:15:40 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 15:15:40 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-17 15:15:43 | ERROR    | opentelemetry.exporter.otlp.proto.http.trace_exporter | Failed to export span batch code: 404, reason: Not Found

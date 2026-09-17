@@ -5,6 +5,8 @@
 # ── Credentials & secrets ────────────────────────────────────
 # NEVER commit real credentials. Keep .env.example (safe template) in git.
 .env
+traces
+logs
 
 # ── Session data ─────────────────────────────────────────────
 # FileSessionManager writes conversation history here at runtime.
