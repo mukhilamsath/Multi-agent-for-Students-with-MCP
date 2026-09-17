@@ -311,3 +311,744 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2026-09-11 12:45:26 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 3368 chars
 2026-09-11 12:45:26 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
 2026-09-11 12:45:26 | INFO     | api | POST /chat done  |  session_id='test_api_sess'  specialists=['research']
+2026-09-11 12:51:07 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=mukhil] | query='do some research on biology'
+2026-09-11 12:51:07 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-11 12:51:07 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-11 12:51:07 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=mukhil]
+2026-09-11 12:51:07 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 12:51:07 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 12:51:07 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:51:09 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='mukhil'
+2026-09-11 12:51:09 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:51:09 | INFO     | session_manager | SessionManager  |  session_id='mukhil_research'  storage_dir='c:\\student_agent_with_mcp\\sessions'
+2026-09-11 12:51:09 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 12:51:16 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4722 chars
+2026-09-11 12:51:16 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 12:57:28 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_mcp_log_view] | query='Search for the latest Python 3.13 features online'
+2026-09-11 12:57:28 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-11 12:57:28 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-11 12:57:28 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_mcp_log_view]
+2026-09-11 12:57:28 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 12:57:28 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 12:57:28 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:57:30 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='test_mcp_log_view'
+2026-09-11 12:57:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:57:30 | INFO     | session_manager | SessionManager  |  session_id='test_mcp_log_view_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 12:57:30 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 12:57:34 | INFO     | agents.research_agent | MCP | Calling tool: search | args: {'query': 'latest Python 3.13 features'}
+2026-09-11 12:57:35 | INFO     | agents.research_agent | MCP | Tool result: Found 10 search results:
+
+1. What's New In Python 3.13 — Python 3.14.7 documentation
+   URL: https://docs.python.org/3/whatsnew/3.13.html
+   Summary: What's New InPython3.13¶ Editors: Adam Turner and Thomas Wouters This article explains the newfeaturesinPython3.13, compared to 3.12.Python3.13was released on October 7, 2024. For full details, see the changelog.
+
+2. Python 3.13 New Features - Geeksf ... [truncated]
+2026-09-11 12:57:38 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 2563 chars
+2026-09-11 12:57:38 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 12:57:57 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-11 12:57:57 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_mcp_res] | query='Search for the latest Python 3.13 features online'
+2026-09-11 12:57:57 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-11 12:57:57 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-11 12:57:57 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_mcp_res]
+2026-09-11 12:57:57 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 12:57:57 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 12:57:57 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:57:59 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='test_mcp_res'
+2026-09-11 12:57:59 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:57:59 | INFO     | session_manager | SessionManager  |  session_id='test_mcp_res_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 12:57:59 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 12:58:03 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://docs.python.org/3/whatsnew/3.13.html'}
+2026-09-11 12:58:04 | INFO     | agents.research_agent | MCP | Tool result: What’s New In Python 3.13 — Python 3.14.7 documentation Navigation index modules | next | previous | Python » 3.14.7 Documentation » What’s New in Python » What’s New In Python 3.13 | Theme Auto Light Dark | What’s New In Python 3.13¶ Editors: Adam Turner and Thomas Wouters This article explains the new features in Python 3.13, compared to 3.12. Python 3.13 was released on October 7, 2024. For ful ... [truncated]
+2026-09-11 12:58:07 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 3339 chars
+2026-09-11 12:58:07 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 12:58:07 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 12:58:07 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_mcp_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-11 12:58:07 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 12:58:07 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-11 12:58:07 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_mcp_multi]
+2026-09-11 12:58:07 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='test_mcp_multi'
+2026-09-11 12:58:07 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:58:08 | INFO     | session_manager | SessionManager  |  session_id='test_mcp_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 12:58:08 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 12:58:15 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4841 chars
+2026-09-11 12:58:15 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-11 12:58:15 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_mcp_multi]
+2026-09-11 12:58:15 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-11 12:58:15 | INFO     | agents.study_agent | Building Study Agent  |  session_id='__agent_card__'
+2026-09-11 12:58:15 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:58:15 | INFO     | agents.study_agent | Building Study Agent  |  session_id='test_mcp_multi'
+2026-09-11 12:58:15 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:58:15 | INFO     | session_manager | SessionManager  |  session_id='test_mcp_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 12:58:15 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 12:58:23 | INFO     | tools.study_tools | explain_topic called  |  topic='DBMS normalization'  level='beginner'
+2026-09-11 12:58:23 | INFO     | tools.study_tools | explain_topic ready   |  prompt length=243 chars
+2026-09-11 12:58:25 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 6534 chars
+2026-09-11 12:58:25 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-11 12:58:25 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-11 12:58:25 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-11 12:58:25 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 12:58:26 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-11 12:58:26 | WARNING  | strands.tools.mcp.mcp_client | error=<the client initialization failed: [WinError 2] The system cannot find the file specified> | MCP server failed to start, continuing with no tools
+2026-09-11 13:04:06 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=kavinesh] | query='do some research on python'
+2026-09-11 13:04:06 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-11 13:04:06 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-11 13:04:06 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=kavinesh]
+2026-09-11 13:04:06 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 13:04:06 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 13:04:06 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 13:04:08 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='kavinesh'
+2026-09-11 13:04:08 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 13:04:08 | INFO     | session_manager | SessionManager  |  session_id='kavinesh_research'  storage_dir='c:\\student_agent_with_mcp\\sessions'
+2026-09-11 13:04:08 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 13:04:12 | INFO     | agents.research_agent | MCP | Calling tool: search | args: {'query': 'Python programming language tutorial', 'max_results': 5}
+2026-09-11 13:04:13 | INFO     | agents.research_agent | MCP | Tool result: Found 5 search results:
+
+1. Python Tutorial - W3Schools
+   URL: https://www.w3schools.com/python/
+   Summary: Pythonis a popularprogramminglanguage.Pythoncan be used on a server to create web applications.Pythonis easy to learn - You will enjoy it!
+
+2. Python Tutorial - GeeksforGeeks
+   URL: https://www.geeksforgeeks.org/python/python-programming-language-tutorial/
+   Summary: Pythonis one of the  ... [truncated]
+2026-09-11 13:04:15 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 2224 chars
+2026-09-11 13:04:15 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 14:56:27 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 14:56:27 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_study] | query='Explain photosynthesis for a beginner'
+2026-09-11 14:56:27 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 14:56:27 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 14:56:27 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_study]
+2026-09-11 14:56:27 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-11 14:56:27 | INFO     | agents.study_agent | Building Study Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 14:56:27 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:56:30 | INFO     | agents.study_agent | Building Study Agent with MCP tools  |  session_id='test_dual_study'
+2026-09-11 14:56:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:56:31 | INFO     | session_manager | SessionManager  |  session_id='test_dual_study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 14:56:31 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 14:56:35 | INFO     | agents.study_agent | MCP | Calling tool: explain_concept | args: {'level': 'beginner', 'concept': 'Photosynthesis'}
+2026-09-11 14:56:36 | INFO     | agents.study_agent | MCP | Tool result: {'result': {'concept': 'Photosynthesis', 'level': 'beginner', 'depth_guideline': 'Use simple vocabulary, avoid unnecessary jargon, and provide a clear real-world analogy.', 'reference_summary': "Photosynthesis is a system of biological processes by which photopigment-bearing autotrophic organisms, such as most plants, algae and cyanobacteria, convert light energy—typically from sunlight—into the c ... [truncated]
+2026-09-11 14:56:38 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1125 chars
+2026-09-11 14:56:38 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 14:56:38 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 14:56:38 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_quiz] | query="Quiz me on Newton's laws of motion - 3 questions"
+2026-09-11 14:56:38 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 14:56:38 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 14:56:38 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_quiz]
+2026-09-11 14:56:38 | INFO     | agents.study_agent | Building Study Agent with MCP tools  |  session_id='test_dual_quiz'
+2026-09-11 14:56:38 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:56:38 | INFO     | session_manager | SessionManager  |  session_id='test_dual_quiz_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 14:56:38 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 14:56:42 | INFO     | agents.study_agent | MCP | Calling tool: generate_study_quiz | args: {'num_questions': 3, 'topic': "Newton's laws of motion"}
+2026-09-11 14:56:42 | INFO     | agents.study_agent | MCP | Tool result: {'result': {'topic': "Newton's laws of motion", 'num_questions': 3, 'difficulty': 'medium', 'instructions': "Generate a 3-question multiple choice quiz on 'Newton's laws of motion' at medium difficulty. For each question, include: Question prompt, 4 options labeled A) through D), the correct answer, and a 1-sentence explanation of why the correct option is right."}}
+2026-09-11 14:56:45 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1908 chars
+2026-09-11 14:56:45 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 14:56:45 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 14:56:45 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-11 14:56:45 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 14:56:45 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-11 14:56:45 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_dual_multi]
+2026-09-11 14:56:45 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 14:56:45 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='__agent_card__'
+2026-09-11 14:56:45 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:56:47 | INFO     | agents.research_agent | Building Research Agent with MCP tools  |  session_id='test_dual_multi'
+2026-09-11 14:56:47 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:56:48 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 14:56:48 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 14:56:52 | INFO     | agents.research_agent | MCP | Calling tool: search | args: {'query': 'DBMS normalization', 'max_results': 5}
+2026-09-11 14:56:53 | INFO     | agents.research_agent | MCP | Tool result: Found 5 search results:
+
+1. Introduction to Database Normalization - GeeksforGeeks
+   URL: https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/
+   Summary: Normalizationis an important process in database design that helps improve the database's efficiency, consistency, and accuracy. It makes it easier to manage and maintain the data and ensures that the database is adaptable ... [truncated]
+2026-09-11 14:56:54 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://www.geeksforgeeks.org/dbms/introduction-of-database-normalization/'}
+2026-09-11 14:56:54 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://www.tpointtech.com/dbms-normalization'}
+2026-09-11 14:56:54 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://www.geeksforgeeks.org/dbms/normal-forms-in-dbms/'}
+2026-09-11 14:56:54 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://www.datacamp.com/tutorial/normalization-in-sql'}
+2026-09-11 14:56:54 | INFO     | agents.research_agent | MCP | Calling tool: fetch_content | args: {'url': 'https://www.digitalocean.com/community/tutorials/database-normalization'}
+2026-09-11 14:56:56 | INFO     | agents.research_agent | MCP | Tool result: Error: Could not access the webpage (Client error '403 Forbidden' for url 'https://www.datacamp.com/tutorial/normalization-in-sql'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403)
+2026-09-11 14:56:56 | INFO     | agents.research_agent | MCP | Tool result: Introduction to Database Normalization - GeeksforGeeksCoursesTutorialsPracticeJobsDBMS TutorialInterview QuestionsQuizzesAcid PropertiesER ModelData WarehousingNotesIndexingSQLCompiler DesignComputer NetworkDigital ElectronicsAce GATE 2027Basics of DBMSIntroduction of DBMSHistory of DBMSTypes of DBMS ArchitectureDifference between File System and DBMSER & Relational ModelIntroduction of ER ModelSt ... [truncated]
+2026-09-11 14:56:56 | INFO     | agents.research_agent | MCP | Tool result: Normal Forms in DBMS - GeeksforGeeksCoursesTutorialsPracticeJobsDBMS TutorialInterview QuestionsQuizzesAcid PropertiesER ModelData WarehousingNotesIndexingSQLCompiler DesignComputer NetworkDigital ElectronicsAce GATE 2027Basics of DBMSIntroduction of DBMSHistory of DBMSTypes of DBMS ArchitectureDifference between File System and DBMSER & Relational ModelIntroduction of ER ModelStructural Constrain ... [truncated]
+2026-09-11 14:56:56 | INFO     | agents.research_agent | MCP | Tool result: Normalization in DBMS: 1NF, 2NF, 3NF and BCNF with Examples - Tpoint TechPythonJavaJavaScriptSQLCC++HTMLCSSReactNode.jsSpring BootC#PHPMySQLMongoDBAIMLDSADBMSOSDBMS TutorialDBMS TutorialWhat is a DatabaseTypes of DatabasesWhat is RDBMSDifference between DBMS and RDBMSDifference between File System and DBMSDBMS ArchitectureDBMS Three schema ArchitectureData Models in DBMSData model schemaDBMS Data  ... [truncated]
+2026-09-11 14:56:57 | INFO     | agents.research_agent | MCP | Tool result: Database Normalization: 1NF, 2NF, 3NF & BCNF Examples | DigitalOceanBecome a contributor for communityGet paid to write technical tutorials and select a tech-focused charity to receive a matching donation.Sign UpDigitalOcean DocumentationFull documentation for every DigitalOcean product.Learn moreResources for startups and AI-native businessesThe Wave has everything you need to know about building ... [truncated]
+2026-09-11 14:57:00 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 2786 chars
+2026-09-11 14:57:00 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-11 14:57:00 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_multi]
+2026-09-11 14:57:00 | INFO     | agents.study_agent | Building Study Agent with MCP tools  |  session_id='test_dual_multi'
+2026-09-11 14:57:00 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 14:57:01 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 14:57:01 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 14:57:04 | INFO     | agents.study_agent | MCP | Calling tool: explain_concept | args: {'level': 'beginner', 'concept': 'Database Normalization'}
+2026-09-11 14:57:06 | INFO     | agents.study_agent | MCP | Tool result: {'result': {'concept': 'Database Normalization', 'level': 'beginner', 'depth_guideline': 'Use simple vocabulary, avoid unnecessary jargon, and provide a clear real-world analogy.', 'reference_summary': 'Database normalization is the process of structuring a relational database in accordance with a series of normal forms to reduce data redundancy and improve data integrity. It was first proposed by ... [truncated]
+2026-09-11 14:57:08 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1262 chars
+2026-09-11 14:57:08 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-11 14:57:08 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-11 14:57:08 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-11 15:18:51 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:18:51 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_study] | query='Explain photosynthesis for a beginner'
+2026-09-11 15:18:51 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:18:51 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 15:18:51 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_study]
+2026-09-11 15:18:51 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-11 15:18:51 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-11 15:18:51 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:18:52 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_study'
+2026-09-11 15:18:52 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:18:52 | INFO     | session_manager | SessionManager  |  session_id='test_dual_study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:18:52 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:18:58 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1101 chars
+2026-09-11 15:18:58 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 15:18:58 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:18:58 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_quiz] | query="Quiz me on Newton's laws of motion - 3 questions"
+2026-09-11 15:18:58 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:18:58 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 15:18:58 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_quiz]
+2026-09-11 15:18:58 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_quiz'
+2026-09-11 15:18:58 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:18:58 | INFO     | session_manager | SessionManager  |  session_id='test_dual_quiz_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:18:58 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:19:04 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1908 chars
+2026-09-11 15:19:04 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 15:19:04 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 15:19:04 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-11 15:19:04 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 15:19:04 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-11 15:19:04 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_dual_multi]
+2026-09-11 15:19:04 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 15:19:04 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-11 15:19:04 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:19:04 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-11 15:19:04 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:19:05 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:19:05 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:19:10 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4095 chars
+2026-09-11 15:19:10 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-11 15:19:10 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_multi]
+2026-09-11 15:19:10 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-11 15:19:10 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:19:10 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:19:10 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:19:19 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1411 chars
+2026-09-11 15:19:19 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-11 15:19:19 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-11 15:19:19 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-11 15:22:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:22:53 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_study] | query='Explain photosynthesis for a beginner'
+2026-09-11 15:22:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:22:53 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 15:22:53 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_study]
+2026-09-11 15:22:53 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-11 15:22:53 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-11 15:22:53 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:22:53 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_study'
+2026-09-11 15:22:53 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:22:54 | INFO     | session_manager | SessionManager  |  session_id='test_dual_study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:22:54 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:23:00 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1071 chars
+2026-09-11 15:23:00 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 15:23:00 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:23:00 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_quiz] | query="Quiz me on Newton's laws of motion - 3 questions"
+2026-09-11 15:23:00 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:23:00 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 15:23:00 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_quiz]
+2026-09-11 15:23:00 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_quiz'
+2026-09-11 15:23:00 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:23:00 | INFO     | session_manager | SessionManager  |  session_id='test_dual_quiz_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:23:00 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:23:06 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1902 chars
+2026-09-11 15:23:06 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-11 15:23:06 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 15:23:06 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-11 15:23:06 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-11 15:23:06 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-11 15:23:06 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_dual_multi]
+2026-09-11 15:23:06 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-11 15:23:06 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-11 15:23:06 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:23:06 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-11 15:23:06 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:23:06 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:23:06 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:23:12 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4111 chars
+2026-09-11 15:23:12 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-11 15:23:12 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_multi]
+2026-09-11 15:23:12 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-11 15:23:12 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:23:13 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:23:13 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:23:20 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1617 chars
+2026-09-11 15:23:20 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-11 15:23:20 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-11 15:23:20 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-11 15:25:39 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=kavinesh] | query="explain ohm's law"
+2026-09-11 15:25:39 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-11 15:25:39 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-11 15:25:39 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=kavinesh]
+2026-09-11 15:25:39 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-11 15:25:39 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-11 15:25:39 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:25:39 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='kavinesh'
+2026-09-11 15:25:39 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-11 15:25:39 | INFO     | session_manager | SessionManager  |  session_id='kavinesh_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-11 15:25:39 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-11 15:25:45 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1436 chars
+2026-09-11 15:25:45 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully

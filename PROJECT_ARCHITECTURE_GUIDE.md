@@ -36,16 +36,17 @@ This document provides a comprehensive breakdown of every directory and file in 
              (Strands Agent)   (Strands Agent)  (Strands Agent)
                       │                │                │
                       ▼                ▼                ▼
-                 Study Tools     Schedule Tools   MCP Client Layer
-             [study_tools.py]  [schedule_tools.py][mcp_client/client.py]
-                                                        │
-                                                        ▼ (stdio / JSON-RPC)
-                                                  Open-Source MCP Server
-                                                  [duckduckgo-mcp-server]
-                                                        │
-                                                        ▼
-                                                  DuckDuckGo Search &
-                                                  Content Extraction
+                 Study MCP       Schedule Tools   Research MCP
+                Client Layer   [schedule_tools.py] Client Layer
+             [mcp_client/client.py]            [mcp_client/client.py]
+                      │                                 │
+                      ▼ (stdio MCP)                     ▼ (stdio MCP)
+             Study Concept MCP Server          DuckDuckGo MCP Server
+           [servers/study_mcp/server.py]       [duckduckgo-mcp-server]
+                      │                                 │
+                      ▼                                 ▼
+             Concept Explanations,             Live Web Search &
+             Summaries & Quizzes               Content Extraction
 ```
 
 ---
@@ -65,77 +66,63 @@ This document provides a comprehensive breakdown of every directory and file in 
 
 #### 📄 [`api.py`](file:///c:/student_agent_with_mcp/api.py)
 * **Purpose**: Provides a production-grade FastAPI HTTP interface (`POST /chat`, `GET /health`) for web and mobile frontends.
-* **Why it is used**:
-  * Exposes the multi-agent system as a REST API.
-  * Enforces request validation (session ID regex, non-empty queries) using Pydantic models (`ChatRequest`, `ChatResponse`, `ErrorResponse`).
-  * Provides global error handling and configuration/health probes.
 
 ---
 
 #### 📄 [`main.py`](file:///c:/student_agent_with_mcp/main.py)
 * **Purpose**: The command-line interface (CLI) entry point for interactive local terminal sessions.
-* **Why it is used**:
-  * Allows direct, rapid testing and interactive multi-turn conversations in the console without needing an external HTTP client.
-  * Uses the exact same `orchestrate(session_id, query)` entry point as `api.py` ensuring complete behavioral consistency.
 
 ---
 
 #### 📄 [`guardrails.py`](file:///c:/student_agent_with_mcp/guardrails.py)
 * **Purpose**: Central factory for creating protected Amazon Bedrock model instances (`build_guarded_model()`).
-* **Why it is used**:
-  * **Enterprise Content Safety**: Attaches Amazon Bedrock Guardrails to all Strands leaf agents (filtering hate speech, PII, prompt injection, and restricted topics).
-  * **Centralized Configuration**: Ensures all leaf agents share the same safety standards and fallback mechanisms when running in local development without active guardrails.
 
 ---
 
 #### 📄 [`session_manager.py`](file:///c:/student_agent_with_mcp/session_manager.py)
 * **Purpose**: Wraps Strands' `FileSessionManager` to handle multi-turn conversational persistence.
-* **Why it is used**:
-  * Automatically saves and restores conversation history to disk (`sessions/session_<id>/`).
-  * Enables context-aware follow-up questions across multiple requests with the same `session_id`.
 
 ---
 
 #### 📄 [`logger_config.py`](file:///c:/student_agent_with_mcp/logger_config.py)
 * **Purpose**: Centralized logging manager that configures console output and rotating file logging (`logs/student_assistant.log`).
-* **Why it is used**:
-  * Captures and stores all orchestrator routing decisions, A2A protocol events, tool executions, and errors persistently into a log file with timestamps and log levels.
-  * Prevents disk bloat using automated log file rotation (`RotatingFileHandler`).
 
 ---
 
 #### 📄 [`telemetry_config.py`](file:///c:/student_agent_with_mcp/telemetry_config.py)
-* **Purpose**: OpenTelemetry distributed tracing configuration with local JSONL span export and optional Jaeger export.
+* **Purpose**: OpenTelemetry distributed tracing configuration with local JSONL span export.
 
 ---
 
-### 2. Model Context Protocol (MCP) Subsystem (`mcp_client/`)
+### 2. Model Context Protocol (MCP) Subsystem (`mcp_client/` & `servers/`)
 
 #### 📄 [`mcp_client/config.py`](file:///c:/student_agent_with_mcp/mcp_client/config.py)
-* **Purpose**: Manages configuration, tuning parameters (rate limits, safe search mode, timeouts), and process startup parameters for MCP servers.
-* **Why it is used**:
-  * Centralizes MCP server definitions (`duckduckgo-mcp-server`) and environment variables.
-  * Supports stdio process spawning as well as future remote SSE / HTTP endpoints.
+* **Purpose**: Manages configuration and process startup parameters for both MCP servers:
+  * `get_duckduckgo_server_params()`: Configures `duckduckgo-mcp-server` stdio process.
+  * `get_study_server_params()`: Configures `servers/study_mcp/server.py` stdio process.
 
 #### 📄 [`mcp_client/client.py`](file:///c:/student_agent_with_mcp/mcp_client/client.py)
-* **Purpose**: Provides client factory (`create_research_mcp_client`), dynamic tool discovery (`discover_mcp_tools`), and connectivity verification helpers.
-* **Why it is used**:
-  * Bridges Strands Agents with MCP servers via `strands.tools.mcp.MCPClient`.
-  * Encapsulates fault tolerance: uses `continue_on_error=True` to ensure that server disconnects or unavailable binaries do not crash the host process.
+* **Purpose**: Provides client factories (`create_research_mcp_client`, `create_study_mcp_client`), dynamic tool discovery (`discover_mcp_tools`), and diagnostic test runners.
+
+#### 📄 [`servers/study_mcp/server.py`](file:///c:/student_agent_with_mcp/servers/study_mcp/server.py)
+* **Purpose**: Standalone, lightweight open-source Study MCP Server built with MCP 2.x `MCPServer`.
+* **Tools Exposed over MCP**:
+  * `explain_concept`: Provides structured academic concept explanations with definition, core mechanisms, analogies, and reference summaries.
+  * `generate_study_quiz`: Generates practice multiple-choice quizzes with options, answers, and rationale.
+  * `get_concept_summary`: Provides rapid bulleted takeaways and formulas.
+  * `get_study_tips`: Recommends learning techniques (Feynman technique, active recall, spaced repetition).
 
 ---
 
 ### 3. Specialist Agents (`agents/`)
 
-#### 📄 [`agents/research_agent.py`](file:///c:/student_agent_with_mcp/agents/research_agent.py)
-* **Purpose**: The Research Specialist Agent. Powered by the open-source `duckduckgo-mcp-server` accessed through the MCP client layer.
-* **Tools Used (via MCP)**:
-  * `search`: Queries DuckDuckGo for live web information, articles, and documentation.
-  * `fetch_content`: Retrieves and extracts high-signal, clean text from targeted web pages.
-  * `expand_link`: Resolves shortened link tokens to full URLs for citation.
-
 #### 📄 [`agents/study_agent.py`](file:///c:/student_agent_with_mcp/agents/study_agent.py)
-* **Purpose**: The Study Specialist Agent. Handles concept explanations, academic questions, and interactive quizzes.
+* **Purpose**: The Study Specialist Agent. Powered by Amazon Nova (`amazon.nova-micro-v1:0`) and connected to `servers/study_mcp/server.py` via MCP.
+* **Tools Used (via MCP)**: `explain_concept`, `generate_study_quiz`, `get_concept_summary`, `get_study_tips`.
+
+#### 📄 [`agents/research_agent.py`](file:///c:/student_agent_with_mcp/agents/research_agent.py)
+* **Purpose**: The Research Specialist Agent. Powered by Amazon Nova and connected to `duckduckgo-mcp-server` via MCP.
+* **Tools Used (via MCP)**: `search`, `fetch_content`, `expand_link`.
 
 #### 📄 [`agents/schedule_agent.py`](file:///c:/student_agent_with_mcp/agents/schedule_agent.py)
 * **Purpose**: The Schedule Specialist Agent. Manages student study tasks, deadlines, and schedule persistence.
@@ -147,15 +134,3 @@ This document provides a comprehensive breakdown of every directory and file in 
 * **`a2a/cards.py`**: Defines standardized A2A Agent Cards (UUIDs, endpoints, skills, capabilities).
 * **`a2a/client_manager.py`**: Dispatches tasks to specialist agents using standard A2A JSON-RPC protocols.
 * **`agents/servers/`**: ASGI/Starlette servers hosting each agent's A2A endpoint.
-
----
-
-## 🔄 MCP Architecture vs. Previous Local-Tool Architecture
-
-| Dimension | Previous Local Tools | New MCP Architecture |
-| :--- | :--- | :--- |
-| **Tool Protocol** | Custom Python functions decorated with `@tool` in-process. | Standardized **Model Context Protocol (MCP)** JSON-RPC over stdio. |
-| **Tool Execution** | Directly executed within the agent's Python process memory space. | Isolated in a separate server process (`duckduckgo-mcp-server`). |
-| **Tool Discovery** | Hardcoded function list statically passed to `Agent(tools=[...])`. | **Dynamic runtime discovery**: tools, schemas, and descriptions are discovered from the server. |
-| **Server Reusability**| Bound directly to this specific Python project codebase. | Standard open-source MCP server reusable across any MCP client or ecosystem. |
-| **Fault Isolation** | Tool crash or memory leak could affect agent process directly. | Crashes and hangs are isolated to the MCP subprocess and handled gracefully. |
