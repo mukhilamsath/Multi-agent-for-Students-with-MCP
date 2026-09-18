@@ -31,6 +31,7 @@ load_dotenv(dotenv_path=_env_path if _env_path.exists() else None)
 from a2a import send_a2a_message_sync
 from logger_config import setup_logging
 from telemetry_config import setup_telemetry, get_tracer
+from memory.long_term_memory import get_long_term_memory
 
 setup_logging()
 setup_telemetry()
@@ -256,12 +257,29 @@ def orchestrate(session_id: str, query: str) -> OrchestrationResult:
                 target_specialist = pipeline[0]
                 logger.info("ORCHESTRATOR | Dispatching single-agent task to %s via A2A", target_specialist)
 
+                ltm = get_long_term_memory()
+                prompt_to_dispatch = clean_query
+
+                # For study requests, enrich with active student long-term profile / preferences if available
+                if target_specialist == "study":
+                    memory_context = ltm.get_context_summary()
+                    if memory_context:
+                        prompt_to_dispatch = (
+                            f"{clean_query}\n\n"
+                            f"[Long-Term Student Context & Preferences]:\n{memory_context}"
+                        )
+
                 result_text = send_a2a_message_sync(
                     agent_key=target_specialist,
-                    query=clean_query,
+                    query=prompt_to_dispatch,
                     session_id=clean_session_id,
                 )
                 specialists_used.append(target_specialist)
+
+                # If study agent provided an explanation, record the topic in long-term memory
+                if target_specialist == "study" and "NOT_STUDY" not in result_text:
+                    ltm.record_studied_topic(topic=clean_query[:60])
+
                 logger.info("ORCHESTRATOR | Request completed successfully")
 
                 span.set_attribute("specialists.used", target_specialist)

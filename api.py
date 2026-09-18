@@ -168,14 +168,12 @@ class ChatRequest(BaseModel):
 
 # ── Response ──────────────────────────────────────────────────────────────────
 class ChatResponse(BaseModel):
-    """Response returned to the client — session ID and the agent's final answer."""
-    session_id: str = Field(..., description="The session this answer belongs to.")
+    """Response returned to the client — only the agent's clean plain-text answer."""
     answer: str = Field(..., description="The orchestrator's clean plain-text answer.")
 
     model_config = {
         "json_schema_extra": {
             "example": {
-                "session_id": "alice",
                 "answer": "Photosynthesis is the process by which plants convert sunlight...",
             }
         }
@@ -269,7 +267,7 @@ def chat(request: ChatRequest) -> ChatResponse:
 
     logger.info("Done  |  session_id=%r  specialists=%s", session_id, result.specialists_used)
 
-    return ChatResponse(session_id=session_id, answer=result.answer)
+    return ChatResponse(answer=result.answer)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

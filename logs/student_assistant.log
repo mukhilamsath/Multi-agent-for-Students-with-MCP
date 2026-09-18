@@ -1144,3 +1144,664 @@ FileNotFoundError: [WinError 2] The system cannot find the file specified
 2026-09-17 15:15:40 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
 2026-09-17 15:15:40 | INFO     | api | Done  |  session_id='default'  specialists=['study']
 2026-09-17 15:15:43 | ERROR    | opentelemetry.exporter.otlp.proto.http.trace_exporter | Failed to export span batch code: 404, reason: Not Found
+2026-09-17 16:09:54 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='explain the newtons law'
+2026-09-17 16:09:54 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='explain the newtons law'
+2026-09-17 16:09:54 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:09:54 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 16:09:54 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-17 16:09:54 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 16:09:54 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 16:09:54 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:09:56 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-17 16:09:56 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='default'
+2026-09-17 16:09:56 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:09:59 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:09:59 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:10:09 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1818 chars
+2026-09-17 16:10:09 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:10:09 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-17 16:12:08 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='can you do a research on computer'
+2026-09-17 16:12:08 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='can you do a research on computer'
+2026-09-17 16:12:08 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> research
+2026-09-17 16:12:08 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to research via A2A
+2026-09-17 16:12:08 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=default]
+2026-09-17 16:12:08 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-17 16:12:08 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 16:12:08 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:12:09 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='default'
+2026-09-17 16:12:09 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:12:10 | INFO     | session_manager | SessionManager  |  session_id='default_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:12:10 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:12:19 | ERROR    | strands.tools.mcp.mcp_client | tool execution failed
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1068, in call_tool_sync
+    ).result()
+      ~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1864, in run_async
+    return await invoke_event
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 997, in _call_tool_direct
+    result = await compat_call_tool(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 181, in call_tool
+    return await _drive_input_required(session, call_once)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 102, in _drive_input_required
+    result = await call_once(None, None)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 169, in call_once
+    return await session.call_tool(  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\session.py", line 1093, in call_tool
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<12 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\session.py", line 593, in send_request
+    raw = await self._dispatcher.send_raw_request(method, data.get("params"), opts)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\shared\jsonrpc_dispatcher.py", line 336, in send_raw_request
+    raise MCPError(code=CONNECTION_CLOSED, message="Connection closed")
+mcp.shared.exceptions.MCPError: Connection closed
+2026-09-17 16:12:19 | ERROR    | strands.tools.mcp.mcp_client | tool execution failed
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1068, in call_tool_sync
+    ).result()
+      ~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1864, in run_async
+    return await invoke_event
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 997, in _call_tool_direct
+    result = await compat_call_tool(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 181, in call_tool
+    return await _drive_input_required(session, call_once)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 102, in _drive_input_required
+    result = await call_once(None, None)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\_compat.py", line 169, in call_once
+    return await session.call_tool(  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\session.py", line 1093, in call_tool
+    result = await self.send_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<12 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\session.py", line 593, in send_request
+    raw = await self._dispatcher.send_raw_request(method, data.get("params"), opts)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\shared\jsonrpc_dispatcher.py", line 336, in send_raw_request
+    raise MCPError(code=CONNECTION_CLOSED, message="Connection closed")
+mcp.shared.exceptions.MCPError: Connection closed
+2026-09-17 16:12:19 | ERROR    | mcp_client.config | MCP | Error calling tool fetch_content: Cannot close a running event loop
+2026-09-17 16:12:19 | ERROR    | mcp_client.config | MCP | Error calling tool fetch_content: Cannot close a running event loop
+2026-09-17 16:12:22 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 2065 chars
+2026-09-17 16:12:22 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:12:22 | INFO     | api | Done  |  session_id='default'  specialists=['research']
+2026-09-17 16:17:35 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='explain the law of gravity'
+2026-09-17 16:17:35 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='explain the law of gravity'
+2026-09-17 16:17:35 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:17:35 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 16:17:36 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-17 16:17:36 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 16:17:36 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 16:17:36 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:17:36 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-17 16:17:36 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='default'
+2026-09-17 16:17:36 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:17:37 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:17:37 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:17:45 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1503 chars
+2026-09-17 16:17:45 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:17:45 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-17 16:21:13 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='hii'
+2026-09-17 16:21:13 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='hii'
+2026-09-17 16:21:13 | INFO     | orchestrator | ORCHESTRATOR | Query did not match specific patterns -> defaulting to study
+2026-09-17 16:21:13 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 16:21:13 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-17 16:21:15 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 181 chars
+2026-09-17 16:21:15 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:21:15 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-17 16:43:30 | INFO     | api | POST /chat | /invocations  |  session_id='test-session'  query='Show me my full schedule'
+2026-09-17 16:43:30 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test-session] | query='Show me my full schedule'
+2026-09-17 16:43:30 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> schedule
+2026-09-17 16:43:30 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to schedule via A2A
+2026-09-17 16:43:30 | INFO     | a2a.client_manager | A2A | Sending task -> Student Schedule Agent (schedule) [session_id=test-session]
+2026-09-17 16:43:30 | INFO     | agents.servers.schedule_server | Initializing Schedule Agent A2AServer
+2026-09-17 16:43:30 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='__agent_card__'
+2026-09-17 16:43:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:43:30 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='test-session'
+2026-09-17 16:43:30 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:43:30 | INFO     | session_manager | SessionManager  |  session_id='test-session_schedule'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:43:30 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:43:32 | INFO     | tools.schedule_tools | view_schedule called  |  filter=''
+2026-09-17 16:43:32 | INFO     | tools.schedule_tools | view_schedule done    |  0 task(s) returned
+2026-09-17 16:43:34 | INFO     | a2a.client_manager | A2A | Student Schedule Agent completed | response length: 480 chars
+2026-09-17 16:43:34 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:43:34 | INFO     | api | Done  |  session_id='test-session'  specialists=['schedule']
+2026-09-17 16:51:45 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:51:45 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_study] | query='Explain photosynthesis for a beginner'
+2026-09-17 16:51:45 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:51:45 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 16:51:45 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_study]
+2026-09-17 16:51:45 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 16:51:45 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 16:51:45 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:51:46 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_study'
+2026-09-17 16:51:46 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:51:46 | INFO     | session_manager | SessionManager  |  session_id='test_dual_study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:51:46 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:51:53 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 2110 chars
+2026-09-17 16:51:53 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:51:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:51:53 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_quiz] | query="Quiz me on Newton's laws of motion - 3 questions"
+2026-09-17 16:51:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 16:51:53 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 16:51:53 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_quiz]
+2026-09-17 16:51:53 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_quiz'
+2026-09-17 16:51:53 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:51:53 | INFO     | session_manager | SessionManager  |  session_id='test_dual_quiz_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:51:53 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:52:00 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 3804 chars
+2026-09-17 16:52:00 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 16:52:00 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-17 16:52:00 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-17 16:52:00 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-17 16:52:00 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-17 16:52:00 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_dual_multi]
+2026-09-17 16:52:00 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-17 16:52:00 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 16:52:00 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:52:01 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-17 16:52:01 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:52:01 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:52:01 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:52:07 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4104 chars
+2026-09-17 16:52:07 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-17 16:52:07 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_multi]
+2026-09-17 16:52:07 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-17 16:52:07 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 16:52:08 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 16:52:08 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 16:52:16 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1630 chars
+2026-09-17 16:52:16 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-17 16:52:16 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-17 16:52:16 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-17 17:45:06 | INFO     | tools.memory_tools | memory_tools | remember_student_preference: 'quiz_format' -> 'multiple-choice 4 options'
+2026-09-17 17:45:06 | INFO     | tools.memory_tools | memory_tools | remember_student_fact: [profile] 'Student is a freshman majoring in Computer Science'
+2026-09-17 17:45:06 | INFO     | tools.memory_tools | memory_tools | recall_student_memory for query: 'Computer Science'
+2026-09-17 17:45:06 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=session_alpha_101] | query='Explain photosynthesis for a beginner'
+2026-09-17 17:45:06 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 17:45:06 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 17:45:06 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=session_alpha_101]
+2026-09-17 17:45:06 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 17:45:06 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='__agent_card__'
+2026-09-17 17:45:06 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:07 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='session_alpha_101'
+2026-09-17 17:45:07 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:07 | INFO     | session_manager | SessionManager  |  session_id='session_alpha_101_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:45:07 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:45:16 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 2055 chars
+2026-09-17 17:45:16 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 17:45:16 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=session_beta_202] | query='Show me my full schedule'
+2026-09-17 17:45:16 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> schedule
+2026-09-17 17:45:16 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to schedule via A2A
+2026-09-17 17:45:16 | INFO     | a2a.client_manager | A2A | Sending task -> Student Schedule Agent (schedule) [session_id=session_beta_202]
+2026-09-17 17:45:16 | INFO     | agents.servers.schedule_server | Initializing Schedule Agent A2AServer
+2026-09-17 17:45:16 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='__agent_card__'
+2026-09-17 17:45:16 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:16 | INFO     | agents.schedule_agent | Building Schedule Agent  |  session_id='session_beta_202'
+2026-09-17 17:45:16 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:17 | INFO     | session_manager | SessionManager  |  session_id='session_beta_202_schedule'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:45:17 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:45:19 | INFO     | tools.schedule_tools | view_schedule called  |  filter=''
+2026-09-17 17:45:19 | INFO     | tools.schedule_tools | view_schedule done    |  0 task(s) returned
+2026-09-17 17:45:21 | INFO     | a2a.client_manager | A2A | Student Schedule Agent completed | response length: 478 chars
+2026-09-17 17:45:21 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 17:45:49 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 17:45:49 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_study] | query='Explain photosynthesis for a beginner'
+2026-09-17 17:45:49 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 17:45:49 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 17:45:49 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_study]
+2026-09-17 17:45:49 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-17 17:45:49 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='__agent_card__'
+2026-09-17 17:45:49 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:49 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='test_dual_study'
+2026-09-17 17:45:49 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:50 | INFO     | session_manager | SessionManager  |  session_id='test_dual_study_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:45:50 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:45:53 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1337 chars
+2026-09-17 17:45:53 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 17:45:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 17:45:53 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_quiz] | query="Quiz me on Newton's laws of motion - 3 questions"
+2026-09-17 17:45:53 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-17 17:45:53 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-17 17:45:53 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_quiz]
+2026-09-17 17:45:53 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='test_dual_quiz'
+2026-09-17 17:45:53 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:45:53 | INFO     | session_manager | SessionManager  |  session_id='test_dual_quiz_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:45:53 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:46:02 | ERROR    | strands.multiagent.a2a.executor | Error in streaming execution
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\multiagent\a2a\executor.py", line 298, in _stream_agent
+    async for event in agent.stream_async(prompt, invocation_state=invocation_state):
+    ...<3 lines>...
+            await self._handle_streaming_event(event, updater, stream_state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1434, in stream_async
+    async for event in events:
+    ...<8 lines>...
+            yield as_dict
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1578, in _run_loop
+    async for event in self._middleware_registry.invoke(
+    ...<11 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\_middleware\registry.py", line 167, in invoke
+    async for event in gen:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1733, in terminal
+    async for event in events:
+    ...<17 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1788, in _execute_event_loop_cycle
+    async for event in events:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 302, in event_loop_cycle
+    async for model_event in model_events:
+        if not isinstance(model_event, ModelStopReason):
+            yield model_event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 690, in _handle_model_execution
+    raise e
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 608, in _handle_model_execution
+    async for event in agent._middleware_registry.invoke(
+    ...<5 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\_middleware\registry.py", line 167, in invoke
+    async for event in gen:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 739, in terminal
+    async for event in stream_messages(
+    ...<11 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\streaming.py", line 568, in stream_messages
+    async for event in process_stream(chunks, start_time, cancel_signal):
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\streaming.py", line 459, in process_stream
+    async for chunk in chunks:
+    ...<36 lines>...
+            handle_redact_content(chunk["redactContent"], state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1401, in stream
+    await task
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 26, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\opentelemetry\instrumentation\threading\__init__.py", line 161, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1561, in _stream
+    raise e
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1451, in _stream
+    response = converse_method(**request)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ModelErrorException: An error occurred (ModelErrorException) when calling the Converse operation: Model produced invalid sequence as part of ToolUse. Please refer to the model tool use troubleshooting guide.
+└ Bedrock region: us-east-1
+└ Model id: amazon.nova-micro-v1:0
+2026-09-17 17:46:02 | ERROR    | strands.multiagent.a2a.executor | task_id=<dcebdc9a-bc4a-428d-8a5b-6939b888397c> | agent execution failed, transitioning to failed state
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\multiagent\a2a\executor.py", line 344, in execute
+    await self._execute_streaming(context, updater)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\multiagent\a2a\executor.py", line 423, in _execute_streaming
+    await self._run_with_context_agent(context_id, prompt, invocation_state, updater, stream_state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\multiagent\a2a\executor.py", line 248, in _run_with_context_agent
+    await self._stream_agent(agent, prompt, invocation_state, updater, stream_state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\multiagent\a2a\executor.py", line 298, in _stream_agent
+    async for event in agent.stream_async(prompt, invocation_state=invocation_state):
+    ...<3 lines>...
+            await self._handle_streaming_event(event, updater, stream_state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1434, in stream_async
+    async for event in events:
+    ...<8 lines>...
+            yield as_dict
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1578, in _run_loop
+    async for event in self._middleware_registry.invoke(
+    ...<11 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\_middleware\registry.py", line 167, in invoke
+    async for event in gen:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1733, in terminal
+    async for event in events:
+    ...<17 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\agent\agent.py", line 1788, in _execute_event_loop_cycle
+    async for event in events:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 302, in event_loop_cycle
+    async for model_event in model_events:
+        if not isinstance(model_event, ModelStopReason):
+            yield model_event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 690, in _handle_model_execution
+    raise e
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 608, in _handle_model_execution
+    async for event in agent._middleware_registry.invoke(
+    ...<5 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\_middleware\registry.py", line 167, in invoke
+    async for event in gen:
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\event_loop.py", line 739, in terminal
+    async for event in stream_messages(
+    ...<11 lines>...
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\streaming.py", line 568, in stream_messages
+    async for event in process_stream(chunks, start_time, cancel_signal):
+        yield event
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\event_loop\streaming.py", line 459, in process_stream
+    async for chunk in chunks:
+    ...<36 lines>...
+            handle_redact_content(chunk["redactContent"], state)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1401, in stream
+    await task
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\threads.py", line 26, in to_thread
+    return await loop.run_in_executor(None, func_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\opentelemetry\instrumentation\threading\__init__.py", line 161, in wrapped_func
+    return original_func(*func_args, **func_kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1561, in _stream
+    raise e
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\models\bedrock.py", line 1451, in _stream
+    response = converse_method(**request)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\botocore\client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ModelErrorException: An error occurred (ModelErrorException) when calling the Converse operation: Model produced invalid sequence as part of ToolUse. Please refer to the model tool use troubleshooting guide.
+└ Bedrock region: us-east-1
+└ Model id: amazon.nova-micro-v1:0
+2026-09-17 17:46:02 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 22 chars
+2026-09-17 17:46:02 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-17 17:46:02 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-17 17:46:02 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=test_dual_multi] | query='Research DBMS normalization and explain it to me'
+2026-09-17 17:46:02 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent intent detected: research -> study
+2026-09-17 17:46:02 | INFO     | orchestrator | ORCHESTRATOR | Step 1/2: Dispatching to research via A2A
+2026-09-17 17:46:02 | INFO     | a2a.client_manager | A2A | Sending task -> Student Research Agent (research) [session_id=test_dual_multi]
+2026-09-17 17:46:02 | INFO     | agents.servers.research_server | Initializing Research Agent A2AServer
+2026-09-17 17:46:02 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='__agent_card__'
+2026-09-17 17:46:02 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:46:02 | INFO     | agents.research_agent | Building Research Agent with decorated MCP tools | session_id='test_dual_multi'
+2026-09-17 17:46:02 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:46:03 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_research'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:46:03 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:46:09 | INFO     | a2a.client_manager | A2A | Student Research Agent completed | response length: 4099 chars
+2026-09-17 17:46:09 | INFO     | orchestrator | ORCHESTRATOR | Step 2/2: Dispatching to study via A2A
+2026-09-17 17:46:09 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=test_dual_multi]
+2026-09-17 17:46:09 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='test_dual_multi'
+2026-09-17 17:46:09 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-17 17:46:09 | INFO     | session_manager | SessionManager  |  session_id='test_dual_multi_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-17 17:46:09 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-17 17:46:17 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 1630 chars
+2026-09-17 17:46:17 | INFO     | orchestrator | ORCHESTRATOR | Multi-agent request completed successfully
+2026-09-17 17:46:17 | ERROR    | strands.tools.mcp.mcp_client | client failed to initialize
+Traceback (most recent call last):
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 462, in start
+    self._init_future.result(timeout=self._startup_timeout)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\concurrent\futures\_base.py", line 402, in __get_result
+    raise self._exception
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\strands\tools\mcp\mcp_client.py", line 1471, in _async_background_thread
+    async with self._transport_callable() as (read_stream, write_stream, *_):
+               ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 214, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 125, in stdio_client
+    process = await _create_platform_compatible_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\client\stdio.py", line 340, in _create_platform_compatible_process
+    return await create_windows_process(command, args, env, errlog, cwd)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\mcp\os\win32\utilities.py", line 156, in create_windows_process
+    process = await anyio.open_process(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_core\_subprocesses.py", line 184, in open_process
+    return await get_async_backend().open_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "C:\student_agent_with_mcp\venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2810, in open_process
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1813, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_subprocess.py", line 39, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_events.py", line 882, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\asyncio\windows_utils.py", line 161, in __init__
+    super().__init__(args, stdin=stdin_rfd, stdout=stdout_wfd,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                     stderr=stderr_wfd, **kwds)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1039, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python313\Lib\subprocess.py", line 1554, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+2026-09-17 17:46:17 | ERROR    | mcp_client.client | Failed to discover MCP tools: the client initialization failed: [WinError 2] The system cannot find the file specified
+2026-09-18 10:21:56 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='what is the last question i asked?'
+2026-09-18 10:21:56 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='what is the last question i asked?'
+2026-09-18 10:21:56 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-18 10:21:56 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-18 10:21:56 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-18 10:21:56 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-18 10:21:56 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='__agent_card__'
+2026-09-18 10:21:56 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-18 10:21:57 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-18 10:21:57 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='default'
+2026-09-18 10:21:57 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-18 10:21:57 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-18 10:21:57 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-18 10:22:00 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 270 chars
+2026-09-18 10:22:00 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-18 10:22:00 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-18 10:22:27 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='my name is mukhil.. remember this'
+2026-09-18 10:22:27 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='my name is mukhil.. remember this'
+2026-09-18 10:22:27 | INFO     | orchestrator | ORCHESTRATOR | Query did not match specific patterns -> defaulting to study
+2026-09-18 10:22:27 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-18 10:22:27 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-18 10:22:29 | INFO     | tools.memory_tools | memory_tools | remember_student_fact: [general] "Student's name is Mukhil"
+2026-09-18 10:22:30 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 317 chars
+2026-09-18 10:22:30 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-18 10:22:30 | INFO     | api | Done  |  session_id='default'  specialists=['study']
+2026-09-18 10:23:16 | INFO     | api | POST /chat | /invocations  |  session_id='default'  query='what is my name?'
+2026-09-18 10:23:16 | INFO     | orchestrator | ORCHESTRATOR | Starting request [session_id=default] | query='what is my name?'
+2026-09-18 10:23:16 | INFO     | orchestrator | ORCHESTRATOR | Routing query -> study
+2026-09-18 10:23:16 | INFO     | orchestrator | ORCHESTRATOR | Dispatching single-agent task to study via A2A
+2026-09-18 10:23:16 | INFO     | a2a.client_manager | A2A | Sending task -> Student Study Agent (study) [session_id=default]
+2026-09-18 10:23:16 | INFO     | agents.servers.study_server | Initializing Study Agent A2AServer
+2026-09-18 10:23:16 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='__agent_card__'
+2026-09-18 10:23:16 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-18 10:23:16 | WARNING  | opentelemetry.instrumentation.instrumentor | Attempting to instrument while already instrumented
+2026-09-18 10:23:16 | INFO     | agents.study_agent | Building Study Agent with decorated MCP tools & LTM | session_id='default'
+2026-09-18 10:23:16 | INFO     | guardrails | Guardrail active  |  id='7jtx4z7eznih'  version='DRAFT'  streaming=False
+2026-09-18 10:23:17 | INFO     | session_manager | SessionManager  |  session_id='default_study'  storage_dir='C:\\student_agent_with_mcp\\sessions'
+2026-09-18 10:23:17 | INFO     | session_manager | SessionManager  |  existing session found — history will be restored
+2026-09-18 10:23:19 | INFO     | tools.memory_tools | memory_tools | recall_student_memory for query: "Student's name"
+2026-09-18 10:23:21 | INFO     | a2a.client_manager | A2A | Student Study Agent completed | response length: 453 chars
+2026-09-18 10:23:21 | INFO     | orchestrator | ORCHESTRATOR | Request completed successfully
+2026-09-18 10:23:21 | INFO     | api | Done  |  session_id='default'  specialists=['study']

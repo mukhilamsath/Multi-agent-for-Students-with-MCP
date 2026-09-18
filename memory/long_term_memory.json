@@ -1,0 +1,56 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "created_at": "2026-09-17T12:15:06.374048+00:00"
+  },
+  "profile": {},
+  "preferences": {
+    "quiz_format": {
+      "value": "multiple-choice 4 options",
+      "updated_at": "2026-09-17T12:15:06.377738+00:00"
+    },
+    "preferred_subject": {
+      "value": "Organic Chemistry",
+      "updated_at": "2026-09-17T12:15:06.391758+00:00"
+    }
+  },
+  "studied_topics": {
+    "Explain photosynthesis for a beginner": {
+      "subject": "General",
+      "summary": "",
+      "last_studied": "2026-09-17T12:15:53.431519+00:00"
+    },
+    "Quiz me on Newton's laws of motion - 3 questions": {
+      "subject": "General",
+      "summary": "",
+      "last_studied": "2026-09-17T12:16:02.529236+00:00"
+    },
+    "my name is mukhil.. remember this": {
+      "subject": "General",
+      "summary": "",
+      "last_studied": "2026-09-18T04:52:30.538257+00:00"
+    },
+    "what is my name?": {
+      "subject": "General",
+      "summary": "",
+      "last_studied": "2026-09-18T04:53:21.191408+00:00"
+    }
+  },
+  "custom_facts": [
+    {
+      "category": "profile",
+      "fact": "Student is a freshman majoring in Computer Science",
+      "created_at": "2026-09-17T12:15:06.381600+00:00"
+    },
+    {
+      "category": "academic",
+      "fact": "Student excels in reaction mechanisms",
+      "created_at": "2026-09-17T12:15:06.394942+00:00"
+    },
+    {
+      "category": "general",
+      "fact": "Student's name is Mukhil",
+      "created_at": "2026-09-18T04:52:29.260976+00:00"
+    }
+  ]
+}

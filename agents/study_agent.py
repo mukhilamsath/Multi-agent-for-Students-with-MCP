@@ -30,11 +30,12 @@ from strands import Agent
 from mcp_client import mcp_tool
 from guardrails import build_guarded_model
 from session_manager import build_session_manager
+from tools.memory_tools import remember_student_preference, remember_student_fact, recall_student_memory
 
 logger = logging.getLogger(__name__)
 
 AGENT_NAME = "Student Study Agent"
-AGENT_DESCRIPTION = "Handles academic learning, topic explanations, concept summaries, and practice quizzes via MCP tools."
+AGENT_DESCRIPTION = "Handles academic learning, topic explanations, concept summaries, practice quizzes, and long-term learning memory."
 
 # ── Decorated MCP Tool Functions (No raw URLs or transports exposed) ─────────
 
@@ -69,7 +70,7 @@ def get_concept_summary(concept: str) -> Dict[str, Any]:
     Get a high-signal bulleted summary and key takeaways for quick revision using Study MCP.
 
     Args:
-        concept: The topic to summarize.
+        topic: The topic to summarize.
     """
     pass
 
@@ -88,34 +89,35 @@ def get_study_tips(topic: str) -> Dict[str, Any]:
 _STUDY_SYSTEM_PROMPT = """
 You are an expert academic tutor helping a student learn effectively and master academic concepts.
 
-You have access to tools connected via the Model Context Protocol (MCP):
-  • explain_concept      — call this when the student wants an explanation, definition,
-                           or deep dive into any academic topic, concept, or theory.
-  • generate_study_quiz  — call this when the student wants to be tested, quizzed,
-                           or wants practice questions on any topic.
-  • get_concept_summary  — call this when the student wants quick bullet points,
-                           formulas, or a fast revision summary.
-  • get_study_tips       — call this when the student asks for study advice, memory
-                           techniques, or tips on mastering difficult material.
+You have access to tools connected via the Model Context Protocol (MCP) and Long-Term Memory:
+  • explain_concept              — call this when the student wants an explanation, definition, or deep dive.
+  • generate_study_quiz          — call this when the student wants practice quiz questions.
+  • get_concept_summary          — call this for quick bullet points, formulas, or fast revision.
+  • get_study_tips               — call this for study advice, mnemonics, and retention strategies.
+  • remember_student_preference  — call this to store long-term preferences (e.g. difficulty, format).
+  • remember_student_fact        — call this to persist long-term facts, goals, or subject mastery.
+  • recall_student_memory        — call this to search cross-session memories, past topics, or preferences.
 
 Workflow & Rules:
   1. For explanations, call `explain_concept` with the subject and inferred level ("beginner", "intermediate", or "advanced").
   2. For quiz requests, call `generate_study_quiz` with the topic and requested number of questions (default 3).
-  3. Synthesize the tool result into a clear, student-friendly, and encouraging explanation or quiz.
-  4. Always present explanations with:
+  3. If the user tells you to remember a fact, goal, or learning preference, call `remember_student_fact` or `remember_student_preference`.
+  4. If the user asks what you remember or asks about past topics across sessions, call `recall_student_memory`.
+  5. Synthesize results into a clear, student-friendly, and encouraging explanation or response.
+  6. Always present explanations with:
      - Clear, intuitive definition
      - Core concepts / bullet points
      - Concrete real-world example or analogy
-  5. End every explanation with: "💡 Tip: ask me to quiz you on this topic!"
+  7. End every explanation with: "💡 Tip: ask me to quiz you on this topic!"
      End every quiz with: "✅ Done! Ask me to explain any question you got wrong."
-  6. If the request is not academic/study-related, reply:
+  8. If the request is not academic/study-related, reply:
      "NOT_STUDY: This request is outside my specialty."
 """.strip()
 
 
 def create_study_agent(session_id: Optional[str] = None) -> Agent:
     """
-    Factory function to build a Strands Study Agent powered by decorated MCP tool functions.
+    Factory function to build a Strands Study Agent powered by decorated MCP and Long-Term Memory tools.
 
     Args:
         session_id: Unique identifier for the conversation session.
@@ -124,7 +126,7 @@ def create_study_agent(session_id: Optional[str] = None) -> Agent:
     Returns:
         Configured Strands Agent instance.
     """
-    logger.info("Building Study Agent with decorated MCP tools | session_id=%r", session_id)
+    logger.info("Building Study Agent with decorated MCP tools & LTM | session_id=%r", session_id)
 
     model = build_guarded_model(temperature=0.3, streaming=False)
 
@@ -133,7 +135,15 @@ def create_study_agent(session_id: Optional[str] = None) -> Agent:
         description=AGENT_DESCRIPTION,
         model=model,
         system_prompt=_STUDY_SYSTEM_PROMPT,
-        tools=[explain_concept, generate_study_quiz, get_concept_summary, get_study_tips],
+        tools=[
+            explain_concept,
+            generate_study_quiz,
+            get_concept_summary,
+            get_study_tips,
+            remember_student_preference,
+            remember_student_fact,
+            recall_student_memory,
+        ],
         callback_handler=None,  # silent — output flows through A2A
     )
 

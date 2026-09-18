@@ -133,23 +133,19 @@ def get_mcp_servers_config() -> Dict[str, Any]:
 # ═══════════════════════════════════════════════════════════════════════════════
 # MCP Tool Decorator & Client Lifecycle Manager
 # ═══════════════════════════════════════════════════════════════════════════════
+# MCP Tool Decorator & Client Lifecycle Manager
+# ═══════════════════════════════════════════════════════════════════════════════
 
-# Internal cached client instances (never exposed publicly)
-_INTERNAL_CLIENT_REGISTRY: Dict[str, Any] = {}
+def _create_mcp_client(server_name: str) -> Any:
+    """Create an MCP client instance for the given server."""
+    from mcp_client.client import create_research_mcp_client, create_study_mcp_client
 
-
-def _get_internal_client(server_name: str) -> Any:
-    """Retrieve or create an internal MCP client instance for the given server."""
-    if server_name not in _INTERNAL_CLIENT_REGISTRY:
-        from mcp_client.client import create_research_mcp_client, create_study_mcp_client
-
-        if server_name in {"duckduckgo", "research"}:
-            _INTERNAL_CLIENT_REGISTRY[server_name] = create_research_mcp_client(continue_on_error=True)
-        elif server_name in {"study", "concept"}:
-            _INTERNAL_CLIENT_REGISTRY[server_name] = create_study_mcp_client(continue_on_error=True)
-        else:
-            raise ValueError(f"Unknown MCP server identifier: {server_name!r}")
-    return _INTERNAL_CLIENT_REGISTRY[server_name]
+    if server_name in {"duckduckgo", "research"}:
+        return create_research_mcp_client(continue_on_error=True)
+    elif server_name in {"study", "concept"}:
+        return create_study_mcp_client(continue_on_error=True)
+    else:
+        raise ValueError(f"Unknown MCP server identifier: {server_name!r}")
 
 
 def mcp_tool(server_name: str, tool_name: Optional[str] = None) -> Callable:
@@ -187,7 +183,7 @@ def mcp_tool(server_name: str, tool_name: Optional[str] = None) -> Callable:
             print(f"\n{log_msg}")
             logger.info(log_msg)
 
-            client = _get_internal_client(server_name)
+            client = _create_mcp_client(server_name)
             tool_use_id = f"mcp-call-{target_mcp_tool}"
 
             try:
